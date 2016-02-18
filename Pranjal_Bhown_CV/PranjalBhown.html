@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Pranjal Bhown</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,100' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<style type="text/css">
+		*{
+			font-family: 'Lato', sans-serif;
+			font-weight: 300;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		}
+		body{
+			margin:0px;
+			padding:0px;
+		}
+		.container{
+			width:100%;
+			height:100%;
+			display: -webkit-flex;
+			display: flex;
+			flex-flow: row wrap;
+		}
+		.doodle{
+			height:200px;
+			width:35%;
+		}
+		.titleText{
+			width:65%;
+			color: #5a5a5a;
+			padding-right: 10px;
+			text-align: right;
+		}
+		.fullWidth{
+			width:100%;
+		}
+		.halfwidth{
+			width:50%;
+		}
+		.sectionTitles{
+			color: white;			
+			padding: 15px 0px;
+			text-align: center;
+			text-transform: uppercase;
+			background-color:rgb(0, 0, 0);
+		}
+		.sectionContent{
+			padding: 35px 30px;
+		}
+		.flexContent{
+			display: -webkit-flex;
+			display: flex;
+			flex-flow: row wrap;		
+		}
+		.aboutContent{		
+			text-align: center;
+		}
+		.resumeContent{
+			text-align:center;
+		}
+		.skill,.rating{
+			padding: 6px 0px;
+		}
+		.skill{
+			text-align:right;
+			padding-right: 10px;
+		}
+		.skill-icon{
+			vertical-align: middle;
+			height: 14px;
+		}
+		.downloadBtn{			
+			background-color: #7d7d7d;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			text-transform: uppercase;
+			margin:auto;			
+			margin-top: 25px;
+		}
+		.downloadBtn:active{
+			background-color: rgb(0, 0, 0);
+		}
+		.stick{
+			position:fixed;
+			left:0px;
+			z-index: 3000;
+		}
+		#floatTitle{
+			display:none;
+			position: fixed;
+			top: 0px;
+			left:0px;
+		}
+		#floatSection{
+			display:none;
+			position: fixed;
+			top: 0px;
+			left:0px;
+		}
+	</style>	
+	<script>
+		$(document).ready(function() {
+			var floatTitle = $("#floatTitle");
+			var floatTitleHeight = floatTitle.outerHeight();
+			var floatSection = $("#floatSection");
+			floatSection.css("top",floatTitleHeight);
+			
+			var aboutTitleVar= $("#aboutTitle");
+			var aboutTitlePos = aboutTitleVar.position();
+			var skillTitleVar=$("#skillTitle");
+			var skillTitlePos = skillTitleVar.position();
+			var resumeTitleVar= $("#resumeTitle");
+			var resumeTitlePos = resumeTitleVar.position();
+			var portfolioTitleVar =$("#portfolioTitle");
+			var portfolioTitlePos = portfolioTitleVar.position();
+			var contactTitleVar= $("#contactTitle");
+			var contactTitlePos = contactTitleVar.position();
+			
+			
+			$(window).scroll(function() {
+				//title scroll
+				var windowpos = $(window).scrollTop();
+				if (windowpos >= (200-floatTitleHeight)) {
+					floatTitle.fadeIn(300);
+				} else {
+					floatTitle.fadeOut(500);
+				}
+				var x=floatTitleHeight;
+				console.log(floatTitleHeight);
+				//about scroll
+				if ((windowpos >= aboutTitlePos.top-floatTitleHeight) && (windowpos < skillTitlePos.top-floatTitleHeight)) {
+					floatSection.text("about");
+					floatSection.show();					
+				} else if ((windowpos >= skillTitlePos.top-floatTitleHeight) && (windowpos < portfolioTitlePos.top-floatTitleHeight)){
+					floatSection.text("skills");
+					floatSection.show();				
+				} else if (windowpos >= portfolioTitlePos.top-floatTitleHeight && windowpos < resumeTitlePos.top-floatTitleHeight){
+					floatSection.text("portfolio");	
+					floatSection.show();				
+				} else if (windowpos >= resumeTitlePos.top-floatTitleHeight && windowpos < contactTitlePos.top-floatTitleHeight){
+					floatSection.text("resume");	
+					floatSection.show();				
+				} else if (windowpos >= contactTitlePos.top-floatTitleHeight){
+					floatSection.text("contact");	
+					floatSection.show();				
+				}
+				else {
+					floatSection.hide();
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="doodle"><img src="doodle.jpg" style="height: 100%;"></div>
+		<div class="titleText">
+			<div class="titleName" style="font-size:50px;font-weight:400;padding-top:20px;">Pranjal Bhown</div>
+			<div class="titleDesc" style="font-size:20px;font-weight:400;padding-top:10px">Designer | Developer</div>
+		</div>
+		<div id="floatTitle" class="sectionTitles fullWidth">Pranjal Bhown</div>
+		<div id="floatSection" class="sectionTitles fullWidth">Section</div>
+		<div id="aboutTitle" class="sectionTitles fullWidth">About</div>
+		<div class=" fullWidth sectionContent aboutContent">
+			Hi! Thank you for visiting my page.
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non diam sed odio luctus facilisis vitae id eros. Aenean id magna sit amet neque finibus feugiat eget eget sem. Integer tellus erat, sollicitudin ac vulputate nec, faucibus eget risus. Etiam accumsan felis a aliquam placerat.</p>
+			<p>Nunc ac orci nibh. Mauris at elit a turpis auctor luctus. Proin fermentum justo id elit eleifend, quis gravida ex sodales. Sed placerat auctor libero, eget faucibus nunc placerat id.</p>
+		</div>
+		<div id="skillTitle" class="sectionTitles fullWidth">Skills</div>
+		<div class="sectionContent fullWidth flexContent">
+			<div class="halfwidth skill">Android</div>
+			<div class="halfwidth rating"><img src="3star.png" class="skill-icon"></div>
+			<div class="halfwidth skill">Java</div>
+			<div class="halfwidth rating"><img src="4star.png" class="skill-icon"></div>
+			<div class="halfwidth skill">HTML/CSS</div>
+			<div class="halfwidth rating"><img src="5star.png" class="skill-icon"></div>
+			<div class="halfwidth skill">Photoshop</div>
+			<div class="halfwidth rating"><img src="4star.png" class="skill-icon"></div>
+			<div class="halfwidth skill">ConceptWave</div>
+			<div class="halfwidth rating"><img src="3star.png" class="skill-icon"></div>
+			<div class="halfwidth skill">Adobe Flash</div>
+			<div class="halfwidth rating"><img src="3star.png" class="skill-icon"></div>
+		</div>
+		<div id="portfolioTitle" class="sectionTitles fullWidth">Portfolio</div>
+		<div class="sectionContent fullWidth">Hi! Thank you for visiting my page. <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non diam sed odio luctus facilisis vitae id eros. Aenean id magna sit amet neque finibus feugiat eget eget sem. Integer tellus erat, sollicitudin ac vulputate nec, faucibus eget risus. Etiam accumsan felis a aliquam placerat. Nunc ac orci nibh. Mauris at elit a turpis auctor luctus. Proin fermentum justo id elit eleifend, quis gravida ex sodales. Sed placerat auctor libero, eget faucibus nunc placerat id.</p>
+		</div>
+		<div id="resumeTitle" class="sectionTitles fullWidth">Resume</div>
+		<div class="sectionContent fullWidth resumeContent">
+			Find all about my interests, projects and experience in my resume.
+			<div><a href="testPDF.pdf"><button class="downloadBtn" type="button">Download</button></a></div>
+		</div>
+		<div id="contactTitle" class="sectionTitles fullWidth">Contact</div>
+		<div class="sectionContent fullWidth">Hi! Thank you for visiting my page. <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non diam sed odio luctus facilisis vitae id eros. Aenean id magna sit amet neque finibus feugiat eget eget sem. Integer tellus erat, sollicitudin ac vulputate nec, faucibus eget risus. Etiam accumsan felis a aliquam placerat. Nunc ac orci nibh. Mauris at elit a turpis auctor luctus. Proin fermentum justo id elit eleifend, quis gravida ex sodales. Sed placerat auctor libero, eget faucibus nunc placerat id.</p>
+		</div>
+		
+	</div>
+</body>
+</html>
